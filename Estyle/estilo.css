@@ -1,0 +1,124 @@
+/* Tailwind cubre la mayoría de utilidades, aquí añadimos ajustes y reglas donde Tailwind no llega o es conveniente centralizar. */
+
+/* 1) Scroll suave para enlaces ancla */
+html {
+  scroll-behavior: smooth; /* Mejora UX al navegar por secciones internas */
+}
+
+/* 2) Clase para ocultar videos u otros elementos vía JS */
+.video-hidden {
+  display: none;
+}
+
+/* --------------------------------------- AGENCIA ---------------------------------*/
+/* 3) Asegurar que el iframe del mapa ocupe exactamente el 100% del contenedor */
+#agencias .h-96 iframe {
+  display: block;    /* evita gaps inline */
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+
+/* --------------------------------  INCIO MENÚ   ----------------------------------- */
+/* 4) Estilos de navegación (clase .nav-link en HTML) */
+.nav-link {
+  color: #4b5563; /* text-gray-600 */
+  transition: color .25s ease;
+  text-decoration: none;
+}
+.nav-link:hover,
+.nav-link:focus {
+  color: #ffb700; /* accent */
+}
+
+/* complementa la versión Tailwind para pseudo-underline - Da color a las opciones del menú al cursar el mouse por encima*/
+.nav-link span { transform-origin: center; }
+.nav-link:hover span,
+.nav-link:focus span { transform: scaleX(1); }
+
+
+/* 5) Botón CTA principal en header (.cta) */
+.cta {
+  color: white;
+  background-color: #ffb700;
+  padding: 0.25rem 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 6px 18px rgba(26,43,71,0.12);
+  transition: background-color .25s ease, transform .18s ease, color .18s ease;
+}
+.cta:hover,
+.cta:focus {
+  background-color: #1a2b47; /* primary */
+  color: #ffb700;
+  transform: translateY(-1px);
+}
+/* --------------------------------------------- INICIO VIDEO ---------------------------------------------- */
+/* 6) Carrusel de videos: el contenedor se transformará por JS */
+#videosContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  will-change: transform; /* hint de rendimiento para animaciones */
+}
+#videosContainer > div {
+  flex: 0 0 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* --------------------------------------------- TESTIMONIOS DE CLIENTES ------------------------------------ */
+/* 7) Testimonios: comportamiento similar a videos */
+#testimonialsContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  will-change: transform;
+  width: 100%;
+}
+#testimonialsContainer > div {
+  flex: 0 0 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+
+/*---------------------------------------- DESTINOS NACIONALES E INTERNACIONALES -----------------------------*/
+/* 8) Ajustes visuales en tarjetas de destino (fallback a utilidades Tailwind) */
+#nationalDestinationsContainer .bg-white,
+#internationalDestinationsContainer .bg-white {
+  border-radius: 0.75rem; /* coincide con rounded-xl */
+  overflow: hidden;
+}
+
+/* 9) Regla para los elementos con background-image (tarjetas) */
+[id^="national-card-"],
+[id^="international-image-"] {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: background-image 0.6s ease, transform 0.35s ease;
+}
+
+/* ------------------------------------------------ FORMULARIO Y AGENCIA  -------------------------------------------------*/
+/* 10) Mejor foco para accesibilidad */
+input:focus, textarea:focus, button:focus, a:focus {
+  outline: 2px solid rgba(255,183,0,0.18);
+  outline-offset: 2px;
+}
+
+/* 11) Responsive tweak para hero en móviles (opcional) */
+@media (max-width: 640px) {
+  #hero h1 { font-size: 2.25rem; } /* reduce tamaño en pantallas pequeñas */
+}
+
+/* 12) Avatar de testimonios: helper */
+.testimonial-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  width: 48px;
+  height: 48px;
+}
