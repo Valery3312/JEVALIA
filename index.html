@@ -1,0 +1,385 @@
+<!--
+    - Tailwind (CDN) para utilidades CSS. (Tailwind: es un framework CSS de código abierto, está compuesto por clases individuales que aplican estilos específicos)
+    - Fuente Inter desde Google Fonts. (Google Fonts:  es un servicio gratuito que proporciona una amplia biblioteca interactiva de fuentes tipográficas de código abierto)
+    - styles.css (personalizaciones).
+    - app.js (lógica dinámica) con defer para ejecutarse después del parsing.
+    - El HTML contiene:  las estructuras (secciones, ids)
+       necesarias para que app.js inyecte contenidos dinámicos (destinos, videos, testimonios).
+-->
+
+<!DOCTYPE html>
+<html lang="es"> <!--Indica que el contenido del sitio está en español.-->
+
+
+<!--  ********************************************************************** INICIO DE HEAD *******************************************************************************************-->
+
+<head>
+  <meta charset="utf-8" /> <!--Define la codificación de caracteres como UTF-8. Así podemos ver carácteres especiales, tildes y Ñ-->
+  <meta name="viewport" content="width=device-width,initial-scale=1" /> <!--Hace que la página sea responsive en móviles.-->
+  <title>Jevalia - El mundo a tu alcance</title>  <!-- Define el texto que aparece en la pestaña del navegador y sirve como título del sitio para buscadores y redes sociales. -->
+
+<!-- Tailwind CDN: proporciona utilidades (grid, flex, colores, spacing) -->
+  <script src="https://cdn.tailwindcss.com"></script> <!--inclusión de Tailwind CSS vía CDN y permite usar clases utilitarias-->
+
+<!-- Fuente Inter: usada por la configuración de Tailwind -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"> <!--importa la fuente; no aplica estilos por sí mismo Tailwind lo llama con clases font-sans-->
+
+<!-- Runtime config de Tailwind: extiende colores y familia tipográfica -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary': '#1a2b47',
+            'accent': '#ffb700',
+            'secondary-bg': '#f3f4f6'
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  </script>
+  
+    <!-- CSS personalizado (separado) -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<!--  ********************************************************************** INICIO DE BODY *******************************************************************************************-->                                                               
+
+<body class="bg-white text-gray-800 font-sans">
+
+<!-- ----------------------------------------------------------------- INICIO HEADER: LOGO + NAVEGACIÓN -------------------------------------------------------------------------------->
+  
+<header class="sticky top-0 z-50 bg-white shadow-lg border-t-4 border-accent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+      <!-- Logo / marca -->
+      <img src="img/Slogan_Jevalia-Photoroom.png"
+     class="h-20 sm:h-20 md:h-24 lg:h-26 w-auto object-contain"
+     alt="">
+
+<!-- ---------------------------------------------------------------- FIN HEADER: LOGO + NAVEGACIÓN  ------------------------------------------------------------------------------------>
+
+<!-------------------------------------------------------------------------------- INICIO MENÚ ------------------------------------------------------------------------------------------>
+<!-------------------------------------------------------------------- Navegación principal (oculta en mobile) -------------------------------------------------------------------------->
+      
+<nav class="hidden md:flex space-x-6 text-lg font-medium">
+        <a href="#destinos_nacionales"
+   class="nav-link relative inline-block text-gray-600 transition-colors duration-200 transform hover:-translate-y-0.5 hover:text-accent focus:outline-none focus:ring-4 focus:ring-accent/20">
+  Nacional
+  <span class="absolute left-1/2 -bottom-1 w-[calc(100%+12px)] h-0.5 rounded-full bg-accent scale-x-0 origin-center transition-transform duration-200 pointer-events-none"></span>
+</a>
+
+        <a href="#destinos_internacionales"
+   class="nav-link relative inline-block text-gray-600 transition-colors duration-200 transform hover:-translate-y-0.5 hover:text-accent focus:outline-none focus:ring-4 focus:ring-accent/20">
+  Internacional
+  <span class="absolute left-1/2 -bottom-1 w-[calc(100%+12px)] h-0.5 rounded-full bg-accent scale-x-0 origin-center transition-transform duration-200 pointer-events-none"></span>
+</a>
+
+        <a href="#experiencias"
+   class="nav-link relative inline-block text-gray-600 transition-colors duration-200 transform hover:-translate-y-0.5 hover:text-accent focus:outline-none focus:ring-4 focus:ring-accent/20">
+  Experiencias
+  <span class="absolute left-1/2 -bottom-1 w-[calc(100%+12px)] h-0.5 rounded-full bg-accent scale-x-0 origin-center transition-transform duration-200 pointer-events-none"></span>
+</a>
+
+        <a href="#servicios"
+   class="nav-link relative inline-block text-gray-600 transition-colors duration-200 transform hover:-translate-y-0.5 hover:text-accent focus:outline-none focus:ring-4 focus:ring-accent/20">
+  Servicios
+  <span class="absolute left-1/2 -bottom-1 w-[calc(100%+12px)] h-0.5 rounded-full bg-accent scale-x-0 origin-center transition-transform duration-200 pointer-events-none"></span>
+</a>
+
+        <a href="#testimonios"
+   class="nav-link relative inline-block text-gray-600 transition-colors duration-200 transform hover:-translate-y-0.5 hover:text-accent focus:outline-none focus:ring-4 focus:ring-accent/20">
+  Testimonios
+  <span class="absolute left-1/2 -bottom-1 w-[calc(100%+12px)] h-0.5 rounded-full bg-accent scale-x-0 origin-center transition-transform duration-200 pointer-events-none"></span>
+</a>
+
+        <a href="#agencias"
+   class="nav-link relative inline-block text-gray-600 transition-colors duration-200 transform hover:-translate-y-0.5 hover:text-accent focus:outline-none focus:ring-4 focus:ring-accent/20">
+  Agencias
+  <span class="absolute left-1/2 -bottom-1 w-[calc(100%+12px)] h-0.5 rounded-full bg-accent scale-x-0 origin-center transition-transform duration-200 pointer-events-none"></span>
+</a>
+
+ <a href="#contacto"
+   class="nav-link relative inline-block text-gray-600 transition-all duration-300 transform 
+          hover:-translate-y-0.5 hover:bg-yellow-400 hover:text-white 
+          focus:outline-none focus:ring-4 focus:ring-accent/20 rounded-full px-1 py--1">
+  Cotiza
+  <span class="absolute left-1/2 -bottom-1 w-[calc(100%+12px)] h-0.5 rounded-full bg-accent 
+               scale-x-0 origin-center transition-transform duration-200 pointer-events-none"></span>
+</a>
+      </nav>
+
+<!----------------------- Botón menú móvil (placeholder funcionalidad) ----------------------------->
+      
+<button class="md:hidden text-primary text-2xl" onclick="alert('Menú móvil')">&#9776;</button>
+    </div>
+  </header>
+
+
+  <!-- MAIN: secciones estructuradas. app.js inyectará contenidos donde corresponda -->
+  <main>
+  <!--------------------------------------------------------------------------- HERO / BANNER ------------------------------------------------------------------------------------------->
+    
+  <section id="hero" class="relative h-[60vh] md:h-[80vh] bg-cover bg-center"
+             style="background-image:url('img/Portada.jpg');">
+      <div class="absolute inset-0 bg-primary/70 flex items-center justify-center">
+        <div class="text-center text-white p-6 rounded-xl max-w-3xl">
+          <h1 class="text-5xl md:text-7xl font-bold mb-4">
+            ¡Viaja con <span class="text-accent">Jevalia</span>!
+          </h1>
+          <p class="text-xl md:text-2xl font-light mb-8">Viajes confiables - experiencias inolvidables</p>
+          <a href="#contacto" class="inline-block bg-accent text-primary font-bold text-lg px-8 py-3 rounded-full shadow-2xl hover:bg-white hover:scale-105 transition duration-300 transform">
+            Cotiza tu Próximo Viaje
+          </a>
+        </div>
+      </div>
+    </section>
+
+<!--------------------------------------------------------------------------------- BUSCADOR -------------------------------------------------------------------------------------------->
+    
+<section id="buscador" class="py-12 bg-secondary-bg">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-extrabold text-center text-primary mb-6">Encuentra tu Destino Ideal</h2>
+        <div class="relative">
+          <!-- Input ligado a filterDestinations() en app.js -->
+          <input id="searchInput" onkeyup="filterDestinations()" 
+                 placeholder="Escribe un destino nacional o internacional (e.g., Galápagos, Japón)..."
+                 class="w-full p-4 pl-12 text-lg border-2 border-primary rounded-full shadow-xl focus:ring-accent focus:border-accent transition duration-300">
+          <!-- Icono lupa -->
+          <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+<!------------------------------------------------------------------ DESTINOS NACIONALES: contenedor donde app.js inyecta 12 tarjetas -------------------------------------------------->
+    
+<section id="destinos_nacionales" class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-extrabold text-primary mb-10 text-center">
+          Destinos Nacionales <span class="text-accent">(Ecuador)</span>
+        </h2>
+        <div id="nationalDestinationsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- tarjetas dinámicas: renderNationalDestinations() -->
+        </div>
+      </div>
+    </section>
+
+<!---------------------------------------------------------------- DESTINOS INTERNACIONALES: contenedor donde app.js inyecta 8 tarjetas ------------------------------------------------>
+    
+<section id="destinos_internacionales" class="py-16 bg-secondary-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-extrabold text-primary mb-10 text-center">
+          Destinos Internacionales <span class="text-accent">(Global)</span>
+        </h2>
+        <div id="internationalDestinationsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- tarjetas dinámicas: renderInternationalDestinations() -->
+        </div>
+      </div>
+    </section>
+
+<!--------------------------------------------- VIDEOS (carrusel): app.js renderiza iframes dentro de este contenedor ------------------------------------------------------------------->
+    
+<section id="videos" class="py-16 min-h-[150vh] flex items-center justify-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <h2 class="text-4xl font-extrabold text-primary mb-10 text-center">Inspiración en Video</h2>
+        <div class="relative overflow-hidden rounded-xl shadow-2xl bg-black">
+          <div id="videosContainer" class="flex transition-transform duration-500 ease-in-out"></div>
+
+          <!-- controles del carrusel de videos -->
+          <button onclick="changeVideo(-1)" class="absolute top-0 left-0 h-full w-1/5 flex items-center justify-start p-4 bg-black/30 hover:bg-black/50 text-white z-10 transition duration-300">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button onclick="changeVideo(1)" class="absolute top-0 right-0 h-full w-1/5 flex items-center justify-end p-4 bg-black/30 hover:bg-black/50 text-white z-10 transition duration-300">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+<!--------------------------------------------------------------------- TESTIMONIOS ----------------------------------------------------------------------------------------------------->
+    <section id="testimonios" class="py-16 bg-primary/95 text-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl font-extrabold text-accent mb-10">Lo que dicen nuestros viajeros</h2>
+        <div class="relative overflow-hidden">
+          <div id="testimonialsContainer" class="flex transition-transform duration-500 ease-in-out"></div>
+
+          <!-- controles testimonios -->
+          <div class="absolute inset-y-0 left-0 flex items-center">
+            <button onclick="changeTestimonial(-1)" class="p-3 bg-accent/70 text-primary rounded-full hover:bg-accent transition duration-300 shadow-lg ml-2">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+          </div>
+          <div class="absolute inset-y-0 right-0 flex items-center">
+            <button onclick="changeTestimonial(1)" class="p-3 bg-accent/70 text-primary rounded-full hover:bg-accent transition duration-300 shadow-lg mr-2">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!--------------------------------------------------------------------- SERVICIOS ------------------------------------------------------------------------------------------------------->
+    <section id="servicios" class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-extrabold text-primary mb-10 text-center">Nuestros Servicios Clave</h2>
+        <div id="servicesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+      </div>
+    </section>
+
+<!----------------------------------------------------------------- CONTACTO (formulario para cotizar) ---------------------------------------------------------------------------------->
+    <section id="contacto" class="py-16 bg-secondary-bg">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-white p-8 rounded-xl shadow-2xl border-t-4 border-accent">
+        <h2 class="text-4xl font-extrabold text-primary mb-6 text-center">Cotiza tu Viaje Ahora</h2>
+        <p class="text-center text-gray-600 mb-8">Déjanos tus datos y un experto de Jevalia se pondrá en contacto contigo.</p>
+
+  <!------------------------- Mensaje de confirmación generado por JS ------------------------->
+        <div id="formMessage" class="mt-4 text-center text-sm font-medium hidden transition duration-500 mb-6" role="alert"></div>
+
+        <form id="travelForm" action="#" method="POST" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="full-name" class="block text-sm font-medium text-gray-700">Nombre Completo</label>
+              <input type="text" id="full-name" name="full-name" required class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm p-3 focus:ring-accent focus:border-accent border">
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+              <input type="email" id="email" name="email" required class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm p-3 focus:ring-accent focus:border-accent border">
+            </div>
+
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono</label>
+              <input type="tel" id="phone" name="phone" required class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm p-3 focus:ring-accent focus:border-accent border">
+            </div>
+
+            <div>
+              <label for="destination" class="block text-sm font-medium text-gray-700">Destino Deseado</label>
+              <input type="text" id="destination" name="destination" placeholder="Ej: París, Tailandia, Cruceros" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm p-3 focus:ring-accent focus:border-accent border">
+            </div>
+
+            <div>
+              <label for="departure-date" class="block text-sm font-medium text-gray-700">Fecha de Salida</label>
+              <input type="date" id="departure-date" name="departure-date" required class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm p-3 focus:ring-accent focus:border-accent border">
+            </div>
+
+            <div>
+              <label for="return-date" class="block text-sm font-medium text-gray-700">Fecha de Retorno</label>
+              <input type="date" id="return-date" name="return-date" required class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm p-3 focus:ring-accent focus:border-accent border">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 p-4 border border-accent/50 rounded-lg bg-accent/10">
+            <h3 class="col-span-3 text-lg font-semibold text-primary mb-2">Número de Viajeros</h3>
+            <div>
+              <label for="adults" class="block text-sm font-medium text-gray-700">Adultos (+12)</label>
+              <input type="number" id="adults" name="adults" min="1" value="1" required class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm p-3 focus:ring-accent focus:border-accent border text-center">
+            </div>
+            <div>
+              <label for="children" class="block text-sm font-medium text-gray-700">Niños (2-11)</label>
+              <input type="number" id="children" name="children" min="0" value="0" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm p-3 focus:ring-accent focus:border-accent border text-center">
+            </div>
+            <div>
+              <label for="infants" class="block text-sm font-medium text-gray-700">Bebés (0-2)</label>
+              <input type="number" id="infants" name="infants" min="0" value="0" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm p-3 focus:ring-accent focus:border-accent border text-center">
+            </div>
+          </div>
+
+          <div>
+            <label for="comments" class="block text-sm font-medium text-gray-700">Comentarios (Presupuesto, preferencias de hotel, etc.)</label>
+            <textarea id="comments" name="comments" rows="3" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm p-3 focus:ring-accent focus:border-accent border"></textarea>
+          </div>
+
+          <div class="pt-4">
+            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-lg text-lg font-medium text-white bg-primary hover:bg-accent hover:text-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition duration-150 transform hover:scale-[1.01]">Enviar Solicitud de Cotización</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+<!-------------------------------------------------------------------------------- AGENCIAS --------------------------------------------------------------------------------------------->
+    <section id="agencias" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-extrabold text-primary mb-10 text-center">Nuestras Agencias y Contacto</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Columna: información de contacto -->
+          <div class="lg:col-span-1 p-6 bg-secondary-bg rounded-xl shadow-lg h-full border-t-4 border-accent">
+            <h3 class="text-2xl font-bold text-primary mb-4">Información de Contacto</h3>
+            <p class="text-gray-600 mb-6">Estamos disponibles para ayudarte a planificar tu aventura. Contáctanos por el medio que prefieras.</p>
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-accent mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                <div>
+                  <p class="font-semibold text-primary">Ventas/Reservas:</p>
+                  <a href="tel:+593987654321" class="text-gray-700 hover:text-accent">+593 98 765 4321</a>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-accent mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h.01M7 21h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <div>
+                  <p class="font-semibold text-primary">Soporte 24/7:</p>
+                  <a href="tel:+5932234567" class="text-gray-700 hover:text-accent">+593 2 234 567 (Emergencias)</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3 mb-8">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-accent mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <div>
+                  <p class="font-semibold text-primary">Correo:</p>
+                  <a href="mailto:info@jevalia.com" class="text-gray-700 hover:text-accent">info@jevalia.com</a>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-accent mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div>
+                  <p class="font-semibold text-primary">Horario de Oficina:</p>
+                  <p class="text-gray-700">Lun - Vie: 9:00 AM - 6:00 PM</p>
+                </div>
+              </div>
+            </div>
+
+            <h4 class="text-lg font-bold text-primary mb-3">Síguenos en Redes</h4>
+            <div class="flex space-x-4">
+              <a href="https://www.facebook.com/jevalia" target="_blank" class="p-3 rounded-full bg-primary text-white hover:bg-accent hover:text-primary transition duration-300 shadow-md" aria-label="Facebook">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M13.397 20.997v-8.194h2.766l.412-3.21h-3.178V7.58c0-.929.258-1.564 1.587-1.564h1.698V3.003c-.297-.043-1.317-.128-2.502-.128-2.48 0-4.186 1.514-4.186 4.305v2.39h-2.775v3.21h2.775v8.194h3.399z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/jevalia" target="_blank" class="p-3 rounded-full bg-primary text-white hover:bg-accent hover:text-primary transition duration-300 shadow-md" aria-label="Instagram">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2A2.4 2.4 0 005 7.8v8.4C5 17.6 6.4 19 7.8 19h8.4c1.4 0 2.8-1.4 2.8-2.8V7.8C19 6.4 17.6 5 16.2 5H7.6z"/><path d="M12 8a4 4 0 100 8 4 4 0 000-8zM12 10a2 2 0 110 4 2 2 0 010-4z"/><circle cx="16.5" cy="7.5" r="1"/></svg>
+              </a>
+              <a href="https://www.tiktok.com/@jevalia" target="_blank" class="p-3 rounded-full bg-primary text-white hover:bg-accent hover:text-primary transition duration-300 shadow-md" aria-label="TikTok">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12.75 2a5.75 5.75 0 0 0 5.74 5.29v2.06a7.8 7.8 0 0 1-4.02-1.12v6.52a5.5 5.5 0 1 1-5.5-5.5c.17 0 .34.01.5.03v2.1a3.4 3.4 0 1 0 3.4 3.4V2h-.12Z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Columna: Mapa (iframe) -->
+          <div class="lg:col-span-2 rounded-xl shadow-2xl overflow-hidden border-t-4 border-primary">
+            <h3 class="p-4 bg-primary text-white text-xl font-bold">Ubicación de Matriz - Quito</h3>
+            <div class="w-full h-96">
+              <!-- iframe ajustado por styles.css para ocupar 100% del contenedor -->
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7967344548742!2d-78.4969856160214!3d-0.18847173490298322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59aa32f6932a5%3A0x9567df6f01c21342!2sAv.%2010%20de%20Agosto%2C%20Quito!5e0!3m2!1ses!2sec!4v1763769565997!5m2!1ses!2sec" width="800" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<!---------------------------------------------------------------------------------- FOOTER -------------------------------------------------------------------------------------------->
+  <footer class="bg-primary text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xl font-semibold mb-2">Jevalia - El mundo a tu alcance</p>
+      <p>&copy; 2024 Jevalia. Todos los derechos reservados. | Viajes confiables, experiencias inolvidables.</p>
+    </div>
+  </footer>
+
+  <!-- Enlazamos el JS externo que contiene la lógica (defer para cargar tras parsing) -->
+  <script src="main.js" defer></script>
+</body>
+</html>
